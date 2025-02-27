@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script th:src="@{/webjars/gridstack/11.1.2/dist/gridstack-all.js}"></script>
+     <link rel="stylesheet" th:href="@{/webjars/gridstack/11.1.2/dist/gridstack.min.css}">
+     <link rel="stylesheet" th:href="@{/styles/demo.css}">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+     <style type="text/css">
+        .with-lines { border: 1px dotted #777}
+        body {
+            background-color: #15263A;
+        }
+        .testClass {
+            background-color: #15263A;
+        }
+        .grid-stack-item-content {
+            background-color: #111C2D;
+            border-radius: 8px;
+            align-content: center;
+        }
+        .grid-stack-item-content:hover {
+            background-color: #2c343f;
+            border: 1px #253041;
+            border-radius: 8px;
+            align-content: center
+        }
+      </style>
+</head>
+    <body>
+        <div class="text-white text-4xl text-center my-2">GridstackJS Demo</div>
+        <div class="grid grid-cols-6 w-full overflow-auto">
+            <div class="col-start-1 col-span-1 mx-3">
+                <div class="rounded" id="grid1"></div>
+            </div>
+            <div class="col-start-2 col-span-5 mx-3">
+                <div class="rounded" id="grid2"></div>
+            </div>
+        </div>
+
+        <script th:src="@{/scripts/events.js}"></script>
+        <script type="text/javascript">
+            let colOpts = {
+                column: 1,
+                row:7,
+                dragOut: true,
+                acceptWidgets: true,
+                itemClass: "testClass",
+                margin: 2
+            }
+            let mainOpts = {
+                row: 10,
+                dragOut: true,
+                float:true,
+                acceptWidgets: true,
+                itemClass: "testClass",
+                margin: 4
+            }
+            GridStack.init(colOpts, document.getElementById('grid1')).load(
+                [
+                    {x:0, y:0, content: '0'}, 
+                    {x:1, y:0, content: '1'},
+                    {x:2, y:0, content: '2'}, 
+                    {x:3, y:0, content: '3'},
+                    {x:4, y:0, content: '4'}, 
+                    {x:5, y:0, content: '5'}, 
+                    {x:6, y:0, content: '6'}, 
+                ]
+            );
+            GridStack.init(mainOpts, document.getElementById('grid2'))
+            .load([{x:0, y:0, content: '7'}, {x:1, y:0, content: '8'}]);
+        </script>
+      </body>  
+</html>
